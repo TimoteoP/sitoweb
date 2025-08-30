@@ -1,0 +1,18 @@
+{
+    "checked_at": "2025-08-21T14:00:00Z",
+    "ttl_days": 30,
+    "items": [
+      {
+        "name": "nextjs",
+        "type": "framework",
+        "version": "14.2.7",
+        "last_updated": "2025-07-30",
+        "sources": [
+          "https://nextjs.org/docs/releases"
+        ],
+        "breaking_changes": [],
+        "notes": "Allineato all'app router; nessuna breaking per minor."
+      }
+    ]
+  }
+  

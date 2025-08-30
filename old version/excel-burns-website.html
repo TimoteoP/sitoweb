@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timoteo Pasquali - Addio Excel, ti portiamo nel nuovo millennio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Professional Color Palette */
+            --primary-dark: #1a1f36;
+            --primary-blue: #2563eb;
+            --accent-orange: #fb923c;
+            --accent-orange-pure: #f97316;
+            --excel-green: #107c41;
+            --error-red: #dc2626;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-500: #6b7280;
+            --gray-300: #d1d5db;
+            --gray-100: #f3f4f6;
+            --white: #ffffff;
+            
+            /* Professional Typography */
+            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Import Inter Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background: #fafafa;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cta-nav {
+            background: var(--primary-blue);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .cta-nav:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section New Design */
+        .hero {
+            padding: 3rem 2rem 4rem;
+            background: linear-gradient(180deg, #fafafa 0%, white 100%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(249, 115, 22, 0.1));
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            color: var(--error-red);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 0.875rem 2rem;
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-icon {
+            color: #10b981;
+            font-size: 1.25rem;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            line-height: 1.4;
+        }
+
+        /* Excel Mockup */
+        .hero-right {
+            position: relative;
+            animation: fadeInRight 0.8s ease;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .excel-mockup {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .excel-header {
+            background: linear-gradient(180deg, #f9fafb, #e5e7eb);
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+        .excel-filename {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .window-controls span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .control-red { background: #ef4444; }
+        .control-yellow { background: #f59e0b; }
+        .control-green { background: #10b981; }
+
+        .excel-ribbon {
+            background: var(--excel-green);
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            color: white;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .excel-formula-bar {
+            background: white;
+            border-bottom: 1px solid var(--gray-300);
+            padding: 0.75rem 1rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .formula-icon {
+            color: var(--excel-green);
+            font-weight: bold;
+        }
+
+        .excel-grid {
+            display: grid;
+            grid-template-columns: 40px repeat(6, 1fr);
+            background: white;
+            font-size: 0.875rem;
+            max-height: 350px;
+            overflow: hidden;
+        }
+
+        .cell {
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem;
+            min-height: 35px;
+            display: flex;
+            align-items: center;
+            background: white;
+            font-size: 0.8rem;
+        }
+
+        .cell-header {
+            background: #f9fafb;
+            font-weight: 600;
+            color: var(--gray-600);
+            text-align: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .cell-error {
+            color: var(--error-red);
+            font-weight: 600;
+            background: #fef2f2;
+        }
+
+        /* Il Metodo Section */
+        .metodo-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .metodo-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .metodo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .metodo-title {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .metodo-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+        }
+
+        .metodo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .metodo-step {
+            padding: 1.5rem;
+            border-left: 3px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .metodo-step:hover {
+            border-left-color: var(--primary-blue);
+            background: var(--gray-50);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .metodo-step h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .metodo-step p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: var(--gray-50);
+        }
+
+        .services-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-title {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .services-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            border-radius: 16px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: transparent;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-description {
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.75rem 0;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--gray-100);
+            position: relative;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .service-cta {
+            display: block;
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            color: var(--gray-900);
+        }
+
+        .newsletter-button {
+            padding: 1rem 2.5rem;
+            background: var(--accent-orange-pure);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .newsletter-button:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .privacy-checkbox {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .privacy-checkbox input[type="checkbox"] {
+            margin-top: 2px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .privacy-checkbox label {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .privacy-checkbox a {
+            color: white;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            @media (min-width: 640px) {
+                .newsletter-form {
+                    flex-direction: row;
+                    justify-content: center;
+                }
+                
+                .newsletter-input {
+                    flex: 1;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🔥</div>
+                <span>Timoteo Pasquali</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#servizi">Servizi</a>
+                <a href="#metodo">Metodo</a>
+                <a href="#caso-studio">Case study</a>
+                <a href="#chi-sono">Chi sono</a>
+                <a href="#blog">Blog</a>
+                <a href="#contatti">Contatti</a>
+                <a href="#newsletter" class="cta-nav">Guida gratuita</a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    🔥 Addio Foglio Excel • Benvenuta IA
+                </div>
+                <h1 class="hero-title">
+                    Hai l'Azienda invasa da fogli Excel?
+                </h1>
+                <p class="hero-subtitle">
+                    Sei alla 27esima versione definitiva bis di quel foglio Excel fondamentale?
+                    Tremi ad ogni aggiornamento di Windows?
+                    Usi macro ereditate che nessuno sa come funzionino?
+                    Finalmente qualcuno ha ascoltato le tue grida d'aiuto! Ti porto da un labirinto di fogli excel ad un sistema unico, sicuro e automatizzato in 30 giorni.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#caso-studio" class="btn-primary">Scarica il caso studio completo</a>
+                    <a href="#metodo" class="btn-secondary">Scopri il Metodo</a>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span class="feature-icon">✅</span>
+                        <span class="feature-text">Applicabile ad ogni tipo di attività</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">📊</span>
+                        <span class="feature-text">Creato su misura</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">🔧</span>
+                        <span class="feature-text">Lo sviluppiamo assieme</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="excel-mockup">
+                    <div class="excel-header">
+                        <span class="excel-filename">📊 Gestionale_2025_FINALE_v3_DEFINITIVO_davvero.xlsx</span>
+                        <div class="window-controls">
+                            <span class="control-red"></span>
+                            <span class="control-yellow"></span>
+                            <span class="control-green"></span>
+                        </div>
+                    </div>
+                    <div class="excel-ribbon">
+                        <span>Home</span>
+                        <span>Inserisci</span>
+                        <span>Formule</span>
+                        <span>Dati</span>
+                        <span>Revisione</span>
+                        <span>Visualizza</span>
+                    </div>
+                    <div class="excel-formula-bar">
+                        <span class="formula-icon">fx</span>
+                        <span>=SE(CERCA.VERT(A2;Database!$A:$Z;3;FALSO())>0;SOMMA(B2:B999);"Errore")</span>
+                    </div>
+                    <div class="excel-grid">
+                        <!-- Headers -->
+                        <div class="cell cell-header"></div>
+                        <div class="cell cell-header">A</div>
+                        <div class="cell cell-header">B</div>
+                        <div class="cell cell-header">C</div>
+                        <div class="cell cell-header">D</div>
+                        <div class="cell cell-header">E</div>
+                        <div class="cell cell-header">F</div>
+                        
+                        <!-- Row 1 -->
+                        <div class="cell cell-header">1</div>
+                        <div class="cell">Cliente</div>
+                        <div class="cell">Fatturato</div>
+                        <div class="cell">Margine</div>
+                        <div class="cell cell-error">#RIF!</div>
+                        <div class="cell">Scadenza</div>
+                        <div class="cell cell-error">#NOME?</div>
+                        
+                        <!-- Row 2 -->
+                        <div class="cell cell-header">2</div>
+                        <div class="cell">Ottica Rossi</div>
+                        <div class="cell">€ 987.650</div>
+                        <div class="cell cell-error">#DIV/0!</div>
+                        <div class="cell">28%</div>
+                        <div class="cell">31/12/2024</div>
+                        <div class="cell cell-error">######</div>
+                        
+                        <!-- Row 3 -->
+                        <div class="cell cell-header">3</div>
+                        <div class="cell">Studio Bianchi</div>
+                        <div class="cell cell-error">#VALORE!</div>
+                        <div class="cell">€ 45.230</div>
+                        <div class="cell">12%</div>
+                        <div class="cell cell-error">#####</div>
+                        <div class="cell">Errore</div>
+                        
+                        <!-- Row 4 -->
+                        <div class="cell cell-header">4</div>
+                        <div class="cell">Dr. Verdi</div>
+                        <div class="cell">€ 156.890</div>
+                        <div class="cell">35%</div>
+                        <div class="cell cell-error">#N/D</div>
+                        <div class="cell">15/01/2025</div>
+                        <div class="cell cell-error">#RIF!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Il Metodo Section -->
+    <section class="metodo-section" id="metodo">
+        <div class="metodo-container">
+            <div class="metodo-header">
+                <h2 class="metodo-title">Il Metodo in 6 Step</h2>
+                <p class="metodo-subtitle">
+                    Come trasformare un'accozzaglia di fogli Excel in un sistema integrato, stabile ed efficiente.
+                </p>
+            </div>
+            
+            <div class="metodo-grid">
+                <div class="metodo-step">
+                    <div class="step-number">1</div>
+                    <h3>Analisi del Caos</h3>
+                    <p>Mappiamo tutti i processi nascosti nei tuoi Excel. Ogni formula, ogni collegamento, ogni automazione mancata.</p>
+                </div>
+                
+                <div class="metodo-step">
+                    <div class="step-number">2</div>
+                    <h3>Progettazione Intelligente</h3>
+                    <p>L'IA diventa il tuo architetto software. Definiamo insieme la struttura perfetta per il tuo business.</p>
+                </div>
+                
+                <div class="metodo-step">
+                    <div class="step-number">3</div>
+                    <h3>Sviluppo Guidato</h3>
+                    <p>Claude e ChatGPT (o gli LLM che sceglieremo al momento) scrivono il codice. Tu supervisioni. Nessuna programmazione richiesta.</p>
+                </div>
+                
+                <div class="metodo-step">
+                    <div class="step-number">4</div>
+                    <h3>Test e Ottimizzazione</h3>
+                    <p>Sistema testato sul campo con i tuoi dati reali. Aggiustamenti in tempo reale fino alla perfezione.</p>
+                </div>
+                
+                <div class="metodo-step">
+                    <div class="step-number">5</div>
+                    <h3>Formazione e Adozione</h3>
+                    <p>Il tuo team impara in ore, non settimane. Supporto continuo per la transizione.</p>
+                </div>
+                
+                <div class="metodo-step">
+                    <div class="step-number">6</div>
+                    <h3>Libertà Totale</h3>
+                    <p>Sei autonomo. Puoi modificare, espandere, migliorare quando vuoi, senza dipendere da nessuno.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servizi">
+        <div class="services-container">
+            <div class="services-header">
+                <h2 class="services-title">Tre percorsi per la tua trasformazione</h2>
+                <p class="services-subtitle">Scegli come vuoi entrare nel futuro</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- IMPARA Card -->
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">Impara</h3>
+                    <p class="service-description">
+                        Diventa autonomo nella creazione di sistemi automatizzati. 
+                        Il Metodo completo che ho usato per l'ottica, spiegato passo dopo passo.
+                    </p>
+                    <ul class="service-features">
+                        <li>Metodo testato su business reali</li>
+                        <li>Zero programmazione richiesta</li>
+                        <li>Supporto continuo incluso</li>
+                        <li>Risultati in 30 giorni</li>
+                    </ul>
+                    <a href="#" class="service-cta">Scopri il Metodo</a>
+                </div>
+
+                <!-- USA Card -->
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Utilizza</h3>
+                    <p class="service-description">
+                        Soluzioni pronte all'uso per i problemi più comuni di ogni imprenditore o professionista.
+                        App testate e ottimizzate per la realtà italiana che fanno risparmiare tempo e denaro.
+                    </p>
+                    <ul class="service-features">
+                        <li>Gestione email intelligente</li>
+                        <li>Fatturazione automatica</li>
+                        <li>Organizzazione clienti</li>
+                        <li>Report automatici</li>
+                    </ul>
+                    <a href="#" class="service-cta">Prova gratuitamente</a>
+                </div>
+
+                <!-- CRESCI Card -->
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3 class="service-title">Cresci</h3>
+                    <p class="service-description">
+                        Padroneggia il marketing moderno con l'aiuto dei migliori esperti virtuali.
+                        Formazione continua iper-efficace adattata al tuo business.
+                    </p>
+                    <ul class="service-features">
+                        <li>I Giganti del marketing sempre disponibili</li>
+                        <li>Strategie personalizzate</li>
+                        <li>Applicazione pratica immediata</li>
+                        <li>Aggiornamenti continui</li>
+                    </ul>
+                    <a href="#" class="service-cta">Inizia a crescere</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">Scarica il Case Study Completo</h2>
+            <p class="newsletter-description">
+                Come un'ottica da 1M€ ha eliminato tutti i fogli Excel in 30 giorni: numeri, processo e risultati
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="La tua email" required>
+                <div class="privacy-checkbox">
+                    <input type="checkbox" id="privacy-accept" required>
+                    <label for="privacy-accept">
+                        Accetto la <a href="/privacy-policy" target="_blank">Privacy Policy</a> e acconsento al trattamento dei miei dati personali
+                    </label>
+                </div>
+                <button type="submit" class="newsletter-button">Ricevi la Guida</button>
+            </form>     
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Timoteo Pasquali | P.IVA IT00000000000 | Tutti i diritti riservati</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:info@timoteopasquali.it" style="color: white; text-decoration: none;">info@timoteopasquali.it</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Newsletter form handler
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const privacyCheckbox = document.getElementById('privacy-accept');
+            if (!privacyCheckbox.checked) {
+                alert('Per favore, accetta la Privacy Policy per continuare.');
+                return;
+            }
+            
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Show success message
+            const button = this.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = '✓ Inviato con successo!';
+            button.style.background = '#10b981';
+            
+            // Reset form
+            this.reset();
+            privacyCheckbox.checked = false;
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 3000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Progressive Excel corruption
+        let corruptionLevel = 0;
+        const corruptInterval = setInterval(() => {
+            if (corruptionLevel < 8) {
+                corruptionLevel++;
+                const cells = document.querySelectorAll('.cell:not(.cell-header):not(.cell-error)');
+                if (cells.length > 0) {
+                    const randomCell = cells[Math.floor(Math.random() * cells.length)];
+                    randomCell.classList.add('cell-error');
+                    const errors = ['#RIF!', '#NOME?', '#DIV/0!', '#VALORE!', '#N/D', '######'];
+                    randomCell.textContent = errors[Math.floor(Math.random() * errors.length)];
+                }
+            } else {
+                clearInterval(corruptInterval);
+            }
+        }, 2500);
+
+        // Add subtle parallax to Excel mockup
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const excelMockup = document.querySelector('.excel-mockup');
+            if (excelMockup && scrolled < 800) {
+                excelMockup.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                alert('Non serve più salvare manualmente! Nel nuovo sistema tutto è automatico e sicuro.');
+            }
+        });
+    </script>
+</body>
+</html>

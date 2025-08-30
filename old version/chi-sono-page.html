@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Sono - Timoteo Pasquali | Il tuo traduttore Excel-Futuro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Professional Color Palette - Same as main site */
+            --primary-dark: #1a1f36;
+            --primary-blue: #2563eb;
+            --accent-orange: #fb923c;
+            --accent-orange-pure: #f97316;
+            --excel-green: #107c41;
+            --error-red: #dc2626;
+            --gray-900: #111827;
+            --gray-700: #374151;
+            --gray-500: #6b7280;
+            --gray-300: #d1d5db;
+            --gray-100: #f3f4f6;
+            --white: #ffffff;
+            
+            /* Typography */
+            --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background: #fafafa;
+        }
+
+        /* Navigation (same as main site) */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* CV Container */
+        .cv-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* CV Header */
+        .cv-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: white;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cv-header-content {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cv-photo {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cv-name-section {
+            color: white;
+        }
+
+        .cv-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cv-title {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* CV Sections */
+        .cv-section {
+            padding: 2.5rem 3rem;
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .cv-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Experience Items */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+        }
+
+        .experience-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: var(--gray-700);
+            margin-bottom: 0.75rem;
+        }
+
+        .experience-description {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .experience-achievements {
+            list-style: none;
+            margin-top: 0.75rem;
+        }
+
+        .experience-achievements li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray-700);
+        }
+
+        .experience-achievements li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--gray-50);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--gray-100);
+        }
+
+        .skill-category-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: '✓';
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Languages Section */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .language-level {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            background: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+        }
+
+        /* Stats Counter */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            padding: 2rem 3rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--gray-50);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 1.75rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .contact-subtitle {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-card-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .testimonial-item {
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray-700);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cv-header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .cv-photo {
+                margin: 0 auto;
+            }
+
+            .cv-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">🔥</div>
+                <span>Timoteo Pasquali</span>
+            </a>
+            <div class="nav-links">
+                <a href="/#servizi">Servizi</a>
+                <a href="/#metodo">Metodo</a>
+                <a href="/chi-sono" class="active">Chi Sono</a>
+                <a href="/blog">Blog</a>
+                <a href="/#newsletter">Guida Gratuita</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CV Container -->
+    <div class="cv-container">
+        <!-- CV Header -->
+        <div class="cv-header">
+            <div class="cv-header-content">
+                <div class="cv-photo">👨‍💻</div>
+                <div class="cv-name-section">
+                    <h1 class="cv-name">TIMOTEO PASQUALI</h1>
+                    <p class="cv-title">Marketing Automation Specialist & Excel Terminator</p>
+                    <p class="cv-tagline">"Il tuo traghettatore dai fogli Excel al nuovo millennio"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Counter -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">127</div>
+                    <div class="stat-label">Excel Eliminati</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.2M€</div>
+                    <div class="stat-label">Fatturato Gestito</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Giorni per Sistema</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Righe di Codice Scritte</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <span class="section-icon">💼</span>
+                ESPERIENZA PROFESSIONALE (quella vera, non le buzzword)
+            </h2>
+            
+            <div class="experience-item">
+                <div class="experience-date">2024 - Presente</div>
+                <div class="experience-title">Chief Excel Elimination Officer</div>
+                <div class="experience-company">La mia missione personale</div>
+                <div class="experience-description">
+                    Mi sono stancato di vedere imprenditori di successo prigionieri di fogli Excel del 2003. 
+                    Ora li libero, uno alla volta.
+                </div>
+                <ul class="experience-achievements">
+                    <li>Salvato un'ottica da 1M€ di fatturato dal suicidio da Excel multiplo</li>
+                    <li>Terapista per professionisti con PTSD da #RIF!</li>
+                    <li>Traduttore simultaneo per Boomers</li>
+                    <li>Curiosità personale: lo vedi questo sito? Fatto tutto con l'IA in meno di 4 ore</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-date">2020 - 2024</div>
+                <div class="experience-title">Marketing Consultant Tradizionale</div>
+                <div class="experience-company">Piccole Realtà Locali</div>
+                <div class="experience-description">
+                    Facevo consulenza marketing "alla vecchia maniera". Funzionava, ma vedevo tutti 
+                    impantanati negli stessi problemi: processi manuali, dati raccolti prossimi allo 0, tempo sprecato.
+                    Poi ho scoperto che l'IA poteva risolvere tutto questo. Game changer.
+                </div>
+                <ul class="experience-achievements">
+                    <li>Gestito campagne per oltre 25 realtà locali</li>
+                    <li>Creato strategie che ancora oggi funzionano</li>
+                    <li>Capito che il problema non era solo il marketing, ma l'organizzazione e la vendita</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-date">Prima del 2020</div>
+                <div class="experience-title">La Preistoria</div>
+                <div class="experience-company">Il mondo prima dell'illuminazione</div>
+                <div class="experience-description">
+                    Anche io usavo Excel. Lo ammetto. Avevo perfino delle macro. 
+                    Che crashavano ogni martedì. Non ne parlo volentieri.
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <span class="section-icon">🛠️</span>
+                COMPETENZE (quelle che contano davvero)
+            </h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        🔥 Hard Skills
+                    </h3>
+                    <ul class="skill-list">
+                        <li>Domatore certificato di ChatGPT e Claude</li>
+                        <li>Excel-orcista (so come eliminarli definitivamente)</li>
+                        <li>Creatore di sistemi che non crashano e non temono gli aggiornamenti</li>
+                        <li>Architetto di automazioni che funzionano</li>
+                        <li>Debugger di processi aziendali incasinati</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        💡 Soft Skills
+                    </h3>
+                    <ul class="skill-list">
+                        <li>Parlo fluentemente la lingua degli over 40</li>
+                        <li>Traduco il tecnichese in italiano comprensibile</li>
+                        <li>Pazienza infinita con "il computer non va"</li>
+                        <li>Capacità di spiegare l'IA senza spaventare</li>
+                        <li>Empatia per chi ha 47 password su post-it appiccicati allo schermo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Languages Section -->
+        <div class="cv-section">
+            <h2 class="section-title">
+                <span class="section-icon">🌍</span>
+                LINGUE PARLATE
+            </h2>
+            
+            <div class="language-grid">
+                <div class="language-item">
+                    <span class="language-name">🇮🇹 Italiano</span><br>
+                    <span class="language-level">Madrelingua</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">🇬🇧 Inglese</span><br>
+                    <span class="language-level">Fluente</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">📊 Excel</span>
+                    <br>
+                    <span class="language-level">Preferisco evitare</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">🤖 Prompt Engineering</span>
+                    <br>
+                    <span class="language-level">Nativo digitale</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="cv-section testimonials">
+            <h2 class="section-title">
+                <span class="section-icon">⭐</span>
+                REFERENZE (non richieste, ma arrivate)
+            </h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">
+                        "Mi ha letteralmente salvato l'azienda. Passavamo 3 ore al giorno su Excel, 
+                        ora 30 minuti sul suo sistema. Il resto del tempo? Vendiamo."
+                    </p>
+                    <div class="testimonial-author">Marco R.</div>
+                    <div class="testimonial-role">Titolare Centro Ottico - Milano</div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">
+                        "Finalmente uno che parla la nostra lingua! Niente paroloni tecnici, 
+                        solo soluzioni che funzionano. E soprattutto: addio #RIF!"
+                    </p>
+                    <div class="testimonial-author">Laura B.</div>
+                    <div class="testimonial-role">Studio Commercialista - Bergamo</div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">
+                        "Ero scettico sull'IA, pensavo fosse roba da ragazzini. 
+                        Timoteo mi ha dimostrato che anche un boomer può domarla."
+                    </p>
+                    <div class="testimonial-author">Giuseppe T.</div>
+                    <div class="testimonial-role">Imprenditore 58enne - Brescia</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2 class="contact-title">Vuoi risparmiare tempo, soldi e grattacapi?</h2>
+            <p class="contact-subtitle">Scegli come preferisci contattarmi o seguirmi</p>
+            
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <h3 class="contact-card-title">📧 Scriviamoci</h3>
+                    <p style="color: var(--gray-600); margin-bottom: 1rem;">
+                        Per proposte serie, domande intelligenti o grida di aiuto da Excel
+                    </p>
+                    <a href="mailto:info@timoteopasquali.it" class="contact-button">
+                        Invia Email
+                    </a>
+                </div>
+                
+                <div class="contact-card">
+                    <h3 class="contact-card-title">🚀 Seguimi</h3>
+                    <p style="color: var(--gray-600); margin-bottom: 1rem;">
+                        Tutorial, case study e demolizioni di Excel in diretta
+                    </p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/timoteopasquali" class="social-link" target="_blank">
+                            💼 LinkedIn
+                        </a>
+                        <a href="https://youtube.com/@timoteopasquali" class="social-link" target="_blank">
+                            📺 YouTube
+                        </a>
+                        <a href="https://facebook.com/timoteopasquali" class="social-link" target="_blank">
+                            👥 Facebook
+                        </a>
+                        <a href="https://instagram.com/timoteopasquali" class="social-link" target="_blank">
+                            📸 Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.innerText);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    if (stat.innerText.includes('€')) {
+                        stat.innerText = current.toFixed(1) + 'M€';
+                    } else {
+                        stat.innerText = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+
+        // Trigger animation when stats section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
