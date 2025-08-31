@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import AppDirectory from './AppDirectory';
 
 export const metadata: Metadata = {
   title: 'App - Timoteo Pasquali',
@@ -90,9 +91,6 @@ const apps: AppItem[] = [
 ];
 
 export default function AppPage() {
-  const freeApps = apps.filter(app => app.price === 'Gratis');
-  const paidApps = apps.filter(app => app.price === 'A pagamento');
-
   return (
     <div className="page-container">
       <div className="hero-section">
@@ -103,74 +101,9 @@ export default function AppPage() {
         </p>
       </div>
 
+      <AppDirectory apps={apps} />
+
       <div className="content-section">
-        <div className="apps-intro">
-          <h2>Innovazione Accessibile</h2>
-          <p>
-            Ogni app nasce dalla mia esperienza diretta nel risolvere problemi reali delle aziende. 
-            Offro alcune soluzioni gratuitamente per supportare le piccole imprese, 
-            mentre le app premium includono funzionalità avanzate e supporto dedicato.
-          </p>
-        </div>
-
-        <div className="apps-section">
-          <h2>🎁 App Gratuite</h2>
-          <p className="section-subtitle">
-            Strumenti potenti che puoi utilizzare subito, senza costi nascosti.
-          </p>
-          <div className="apps-grid">
-            {freeApps.map((app, index) => (
-              <div key={index} className="app-card">
-                <div className="app-header">
-                  <h3>{app.title}</h3>
-                  <div className="app-meta">
-                    <span className="app-category">{app.category}</span>
-                    <span className={`app-status status-${app.status.toLowerCase().replace(' ', '-')}`}>
-                      {app.status}
-                    </span>
-                  </div>
-                </div>
-                <p className="app-description">{app.description}</p>
-                <div className="app-footer">
-                  <span className="app-price free">Gratis</span>
-                  <a href={app.link} className="app-link">
-                    {app.status === 'Disponibile' ? 'Scarica' : 'Notificami'}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="apps-section">
-          <h2>💎 App Premium</h2>
-          <p className="section-subtitle">
-            Soluzioni avanzate con funzionalità professionali e supporto dedicato.
-          </p>
-          <div className="apps-grid">
-            {paidApps.map((app, index) => (
-              <div key={index} className="app-card premium">
-                <div className="app-header">
-                  <h3>{app.title}</h3>
-                  <div className="app-meta">
-                    <span className="app-category">{app.category}</span>
-                    <span className={`app-status status-${app.status.toLowerCase().replace(' ', '-')}`}>
-                      {app.status}
-                    </span>
-                  </div>
-                </div>
-                <p className="app-description">{app.description}</p>
-                <div className="app-footer">
-                  <span className="app-price premium">Premium</span>
-                  <a href={app.link} className="app-link premium">
-                    {app.status === 'Disponibile' ? 'Acquista' : 'Pre-ordina'}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="custom-development">
           <h2>🛠️ Sviluppo su Misura</h2>
           <p>

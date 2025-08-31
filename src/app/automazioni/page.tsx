@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import AutomazioniDirectory from './AutomazioniDirectory';
 
 export const metadata: Metadata = {
   title: 'Automazioni - Timoteo Pasquali',
@@ -131,18 +132,6 @@ const automations: AutomationItem[] = [
 ];
 
 export default function AutomazioniPage() {
-  const freeAutomations = automations.filter(automation => automation.price === 'Gratis');
-  const paidAutomations = automations.filter(automation => automation.price === 'A pagamento');
-
-  const getComplexityColor = (complexity: string) => {
-    switch (complexity) {
-      case 'Semplice': return 'complexity-simple';
-      case 'Intermedio': return 'complexity-intermediate';
-      case 'Avanzato': return 'complexity-advanced';
-      default: return '';
-    }
-  };
-
   return (
     <div className="page-container">
       <div className="hero-section">
@@ -188,81 +177,11 @@ export default function AutomazioniPage() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="automations-section">
-          <h2>🎁 Automazioni Gratuite</h2>
-          <p className="section-subtitle">
-            Inizia subito con questi template gratuiti per vedere il potenziale dell&apos;automazione.
-          </p>
-          <div className="automations-grid">
-            {freeAutomations.map((automation, index) => (
-              <div key={index} className="automation-card">
-                <div className="automation-header">
-                  <h3>{automation.title}</h3>
-                  <div className="automation-meta">
-                    <span className="automation-category">{automation.category}</span>
-                    <span className={`automation-complexity ${getComplexityColor(automation.complexity)}`}>
-                      {automation.complexity}
-                    </span>
-                  </div>
-                </div>
-                <p className="automation-description">{automation.description}</p>
-                <div className="automation-details">
-                  <div className="automation-platforms">
-                    <strong>Piattaforme:</strong> {automation.platforms.join(', ')}
-                  </div>
-                  <div className="automation-time">
-                    <strong>Tempo implementazione:</strong> {automation.timeToImplement}
-                  </div>
-                </div>
-                <div className="automation-footer">
-                  <span className="automation-price free">Gratis</span>
-                  <a href={automation.link} className="automation-link">
-                    {automation.status === 'Disponibile' ? 'Scarica' : 'Notificami'}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <AutomazioniDirectory automations={automations} />
 
-        <div className="automations-section">
-          <h2>💎 Automazioni Premium</h2>
-          <p className="section-subtitle">
-            Soluzioni avanzate con logiche complesse e integrazioni multiple per aziende che vogliono il massimo.
-          </p>
-          <div className="automations-grid">
-            {paidAutomations.map((automation, index) => (
-              <div key={index} className="automation-card premium">
-                <div className="automation-header">
-                  <h3>{automation.title}</h3>
-                  <div className="automation-meta">
-                    <span className="automation-category">{automation.category}</span>
-                    <span className={`automation-complexity ${getComplexityColor(automation.complexity)}`}>
-                      {automation.complexity}
-                    </span>
-                  </div>
-                </div>
-                <p className="automation-description">{automation.description}</p>
-                <div className="automation-details">
-                  <div className="automation-platforms">
-                    <strong>Piattaforme:</strong> {automation.platforms.join(', ')}
-                  </div>
-                  <div className="automation-time">
-                    <strong>Tempo implementazione:</strong> {automation.timeToImplement}
-                  </div>
-                </div>
-                <div className="automation-footer">
-                  <span className="automation-price premium">Premium</span>
-                  <a href={automation.link} className="automation-link premium">
-                    {automation.status === 'Disponibile' ? 'Acquista' : 'Pre-ordina'}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
+      <div className="content-section">
         <div className="custom-automation">
           <h2>🚀 Automazione su Misura</h2>
           <p>
