@@ -2,14 +2,16 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV !== 'production';
 
-// Production CSP (strict)
+// Production CSP (relaxed to allow inline scripts used by Next.js and JSON-LD)
+// TODO: Replace 'unsafe-inline' with nonces/hashes once we wire nonce through App Router.
 const prodCsp = [
   "default-src 'self'",
   "style-src 'self' 'unsafe-inline' https:",
-  "img-src 'self' https: data:",
-  "script-src 'self' https://connect.facebook.net",
-  "connect-src 'self' https://*.supabase.co https://api.brevo.com",
-  "frame-src https://www.youtube-nocookie.com",
+  "img-src 'self' https: data: https://i3.ytimg.com",
+  // Allow inline scripts and external scripts for Meta Pixel, YouTube, and cookie consent
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://cdn.jsdelivr.net https://unpkg.com",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.brevo.com https://www.facebook.com https://graph.facebook.com",
+  "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
   "font-src 'self' https: data:",
   "base-uri 'self'",
   "form-action 'self'",
@@ -19,12 +21,12 @@ const prodCsp = [
 const devCsp = [
   "default-src 'self'",
   "style-src 'self' 'unsafe-inline' https:",
-  "img-src 'self' https: data: blob:",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://connect.facebook.net",
-  "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' blob: https://connect.facebook.net",
+  "img-src 'self' https: data: blob: https://i3.ytimg.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://connect.facebook.net https://cdn.jsdelivr.net https://unpkg.com",
+  "script-src-elem 'self' 'unsafe-inline' 'unsafe-eval' blob: https://connect.facebook.net https://cdn.jsdelivr.net https://unpkg.com",
   "script-src-attr 'unsafe-inline'",
   "connect-src 'self' ws: wss: https: http:",
-  "frame-src https://www.youtube-nocookie.com",
+  "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
   "font-src 'self' https: data:",
   "base-uri 'self'",
   "form-action 'self'",
