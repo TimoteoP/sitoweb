@@ -16,12 +16,11 @@ export default function Navigation() {
         </Link>
 
         <div className={`nav-links${open ? ' active' : ''}`} id="navLinks">
-          <a href="#servizi">Servizi</a>
-          <a href="#metodo">Metodo</a>
-          <a href="#caso-studio">Case study</a>
-          <Link href="/chi-sono">Chi sono</Link>
+          <Link href="/il-metodo">Il Metodo</Link>
+          <Link href="/app">App</Link>
+          <Link href="/automazioni">Automazioni</Link>
+          <Link href="/chatbot">Chatbot</Link>
           <Link href="/blog">Blog</Link>
-          <Link href="/contatti">Contatti</Link>
           <a href="#newsletter" className="cta-nav">Guida gratuita</a>
         </div>
 

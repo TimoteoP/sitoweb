@@ -18,7 +18,7 @@ export default function Footer({ currentPage }: FooterProps) {
           marginBottom: '2rem'
         }}>
           
-          {/* Left Column - Legal Menu */}
+          {/* Left Column - Info Pages */}
           <div>
             <h4 style={{ 
               color: 'white',
@@ -29,7 +29,7 @@ export default function Footer({ currentPage }: FooterProps) {
               letterSpacing: '0.05em',
               margin: '0 0 1rem 0'
             }}>
-              Legal Menu
+              Info
             </h4>
             <nav style={{ 
               display: 'flex',
@@ -37,6 +37,28 @@ export default function Footer({ currentPage }: FooterProps) {
               gap: '0.5rem',
               background: 'transparent'
             }}>
+              <Link 
+                href="/chi-sono" 
+                className={`footer-legal-link ${currentPage === 'chi-sono' ? 'active' : ''}`}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  padding: '0'
+                }}
+              >
+                Chi sono
+              </Link>
+              <Link 
+                href="/contatti" 
+                className={`footer-legal-link ${currentPage === 'contatti' ? 'active' : ''}`}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  padding: '0'
+                }}
+              >
+                Contatti
+              </Link>
               <Link 
                 href="/cookie-policy" 
                 className={`footer-legal-link ${currentPage === 'cookie-policy' ? 'active' : ''}`}
