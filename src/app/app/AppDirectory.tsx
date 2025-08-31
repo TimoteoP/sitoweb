@@ -6,9 +6,9 @@ interface AppItem {
   title: string;
   description: string;
   category: string;
-  price: 'Gratis' | 'A pagamento';
+  price: 'Free' | 'Premium';
   link: string;
-  status: 'Disponibile' | 'In sviluppo' | 'Presto disponibile';
+  status: 'Disponibile' | 'In Sviluppo' | 'In Brainstorming';
 }
 
 interface AppDirectoryProps {
@@ -43,14 +43,14 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
     });
   }, [apps, searchTerm, selectedCategory, selectedPrice, selectedStatus]);
 
-  const freeApps = filteredApps.filter(app => app.price === 'Gratis');
-  const paidApps = filteredApps.filter(app => app.price === 'A pagamento');
+  const freeApps = filteredApps.filter(app => app.price === 'Free');
+  const paidApps = filteredApps.filter(app => app.price === 'Premium');
 
   return (
     <div className="content-section">
       {/* Search and Filters */}
       <div style={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
         padding: '2rem',
         borderRadius: '20px',
         marginBottom: '3rem',
@@ -100,7 +100,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                     background: selectedCategory === category 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedCategory === category ? '#764ba2' : 'white',
+                    color: selectedCategory === category ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
@@ -116,7 +116,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
               💰 Prezzo
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-              {['Tutti', 'Gratis', 'A pagamento'].map(price => (
+              {['Tutti', 'Free', 'Premium'].map(price => (
                 <button
                   key={price}
                   onClick={() => setSelectedPrice(price)}
@@ -131,11 +131,11 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                     background: selectedPrice === price 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedPrice === price ? '#764ba2' : 'white',
+                    color: selectedPrice === price ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
-                  {price === 'A pagamento' ? 'Premium' : price}
+                  {price === 'Premium' ? 'Premium' : price === 'Free' ? 'Gratis' : price}
                 </button>
               ))}
             </div>
@@ -147,7 +147,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
               🚀 Stato
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-              {['Tutti', 'Disponibile', 'In sviluppo', 'Presto disponibile'].map(status => (
+              {['Tutti', 'Disponibile', 'In Sviluppo', 'In Brainstorming'].map(status => (
                 <button
                   key={status}
                   onClick={() => setSelectedStatus(status)}
@@ -162,7 +162,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                     background: selectedStatus === status 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedStatus === status ? '#764ba2' : 'white',
+                    color: selectedStatus === status ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
@@ -212,7 +212,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                 justifyContent: 'space-between',
                 marginBottom: '2rem',
                 padding: '1rem 2rem',
-                background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+                background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                 borderRadius: '15px',
                 color: 'white'
               }}>
@@ -239,7 +239,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                     borderRadius: '20px',
                     padding: '2rem',
                     boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
-                    border: '3px solid #11998e',
+                    border: '3px solid #2563eb',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer'
                   }}
@@ -262,7 +262,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
                         <span style={{
                           padding: '0.3rem 0.8rem',
-                          background: '#11998e',
+                          background: '#2563eb',
                           color: 'white',
                           borderRadius: '20px',
                           fontSize: '0.8rem',
@@ -272,7 +272,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                         </span>
                         <span style={{
                           padding: '0.3rem 0.8rem',
-                          background: app.status === 'Disponibile' ? '#38ef7d' : '#ffa726',
+                          background: app.status === 'Disponibile' ? '#38ef7d' : app.status === 'In Sviluppo' ? '#ffa726' : '#ff6b6b',
                           color: 'white',
                           borderRadius: '20px',
                           fontSize: '0.8rem',
@@ -294,7 +294,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                       <span style={{
                         fontSize: '1.2rem',
                         fontWeight: 'bold',
-                        color: '#11998e'
+                        color: '#2563eb'
                       }}>
                         🎁 GRATIS
                       </span>
@@ -304,7 +304,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                         rel="noopener noreferrer"
                         style={{
                           padding: '0.8rem 1.5rem',
-                          background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+                          background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                           color: 'white',
                           textDecoration: 'none',
                           borderRadius: '25px',
@@ -330,7 +330,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                 justifyContent: 'space-between',
                 marginBottom: '2rem',
                 padding: '1rem 2rem',
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                 borderRadius: '15px',
                 color: 'white'
               }}>
@@ -357,7 +357,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                     borderRadius: '20px',
                     padding: '2rem',
                     boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
-                    border: '3px solid #764ba2',
+                    border: '3px solid #fb923c',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer',
                     position: 'relative'
@@ -374,7 +374,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                       position: 'absolute',
                       top: '-10px',
                       right: '20px',
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                       color: 'white',
                       padding: '0.5rem 1rem',
                       borderRadius: '15px',
@@ -395,7 +395,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
                         <span style={{
                           padding: '0.3rem 0.8rem',
-                          background: '#764ba2',
+                          background: '#fb923c',
                           color: 'white',
                           borderRadius: '20px',
                           fontSize: '0.8rem',
@@ -405,7 +405,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                         </span>
                         <span style={{
                           padding: '0.3rem 0.8rem',
-                          background: app.status === 'Disponibile' ? '#38ef7d' : '#ffa726',
+                          background: app.status === 'Disponibile' ? '#38ef7d' : app.status === 'In Sviluppo' ? '#ffa726' : '#ff6b6b',
                           color: 'white',
                           borderRadius: '20px',
                           fontSize: '0.8rem',
@@ -427,7 +427,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                       <span style={{
                         fontSize: '1.2rem',
                         fontWeight: 'bold',
-                        color: '#764ba2'
+                        color: '#fb923c'
                       }}>
                         💎 PREMIUM
                       </span>
@@ -437,7 +437,7 @@ export default function AppDirectory({ apps }: AppDirectoryProps) {
                         rel="noopener noreferrer"
                         style={{
                           padding: '0.8rem 1.5rem',
-                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                           color: 'white',
                           textDecoration: 'none',
                           borderRadius: '25px',

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import ContactCTA from '../../components/ContactCTA';
 
 export const metadata: Metadata = {
   title: 'Il Metodo - Timoteo Pasquali',
@@ -94,16 +95,20 @@ export default function IlMetodoPage() {
           </div>
         </div>
 
-        <div className="cta-section">
-          <h2>Pronto a Trasformare la Tua Azienda?</h2>
-          <p>
-            Scopri come il mio metodo può rivoluzionare i tuoi processi aziendali 
-            e portare risultati concreti in tempi record.
-          </p>
-          <a href="/contatti" className="cta-button">
-            Richiedi una Consulenza Gratuita
-          </a>
-        </div>
+        <ContactCTA
+          title="Trasforma la Tua Azienda"
+          subtitle="Pronto per risultati concreti in 30 giorni?"
+          description="Scopri come il mio metodo personalizzato può rivoluzionare i tuoi processi aziendali e portare risultati misurabili in tempi record. Consulenza gratuita per valutare il potenziale della tua azienda."
+          source="il-metodo-page"
+          icon="⚡"
+          features={[
+            "Consulenza gratuita di 60 minuti",
+            "Analisi dettagliata dei tuoi processi",
+            "Roadmap personalizzata di implementazione",
+            "ROI garantito entro 3 mesi",
+            "Supporto post-implementazione"
+          ]}
+        />
       </div>
     </div>
   );

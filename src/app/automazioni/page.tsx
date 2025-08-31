@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import AutomazioniDirectory from './AutomazioniDirectory';
+import ContactCTA from '../../components/ContactCTA';
 
 export const metadata: Metadata = {
   title: 'Automazioni - Timoteo Pasquali',
@@ -11,11 +12,11 @@ interface AutomationItem {
   description: string;
   category: string;
   complexity: 'Semplice' | 'Intermedio' | 'Avanzato';
-  price: 'Gratis' | 'A pagamento';
+  price: 'Free' | 'Premium';
   platforms: string[];
   timeToImplement: string;
   link: string;
-  status: 'Disponibile' | 'In sviluppo' | 'Presto disponibile';
+  status: 'Disponibile' | 'In sviluppo' | 'In Brainstorming';
 }
 
 const automations: AutomationItem[] = [
@@ -24,7 +25,7 @@ const automations: AutomationItem[] = [
     description: "Template completo per trasferire dati da Excel a database professionali (Airtable/Notion). Include script di validazione, pulizia dati e sincronizzazione bidirezionale.",
     category: "Data Management",
     complexity: "Semplice",
-    price: "Gratis",
+    price: "Free",
     platforms: ["Excel", "Airtable", "Zapier"],
     timeToImplement: "1-2 ore",
     link: "https://gumroad.com/l/excel-to-database-free",
@@ -35,7 +36,7 @@ const automations: AutomationItem[] = [
     description: "Automazione completa per gestire ordini: conferma automatica, fatturazione, tracking spedizioni, feedback clienti. Riduce il 90% del lavoro manuale.",
     category: "E-commerce",
     complexity: "Avanzato",
-    price: "A pagamento",
+    price: "Premium",
     platforms: ["Shopify", "WooCommerce", "Make.com", "Stripe"],
     timeToImplement: "4-6 ore",
     link: "https://gumroad.com/l/ecommerce-automation-pro",
@@ -46,7 +47,7 @@ const automations: AutomationItem[] = [
     description: "Sistema per creare, programmare e pubblicare contenuti social automaticamente. Include generazione AI, ottimizzazione hashtag, cross-posting.",
     category: "Social Media",
     complexity: "Intermedio",
-    price: "Gratis",
+    price: "Free",
     platforms: ["ChatGPT", "Buffer", "Canva", "Google Sheets"],
     timeToImplement: "2-3 ore",
     link: "https://gumroad.com/l/social-content-factory",
@@ -57,7 +58,7 @@ const automations: AutomationItem[] = [
     description: "Sistema AI per qualificare lead automaticamente e attivare sequenze di nurturing personalizzate. Include scoring predittivo e handoff intelligente al sales.",
     category: "Sales & Marketing",
     complexity: "Avanzato",
-    price: "A pagamento",
+    price: "Premium",
     platforms: ["HubSpot", "Zapier", "ChatGPT API", "ActiveCampaign"],
     timeToImplement: "6-8 ore",
     link: "https://gumroad.com/l/lead-nurturing-pro",
@@ -68,7 +69,7 @@ const automations: AutomationItem[] = [
     description: "Gestione completa fatturazione: generazione automatica, invio ricorrente, reminder pagamenti, riconciliazione bancaria. Zero intervento manuale.",
     category: "Amministrazione",
     complexity: "Avanzato",
-    price: "A pagamento",
+    price: "Premium",
     platforms: ["QuickBooks", "Stripe", "Make.com", "FattureInCloud"],
     timeToImplement: "5-7 ore",
     link: "https://gumroad.com/l/invoice-automation-suite",
@@ -79,7 +80,7 @@ const automations: AutomationItem[] = [
     description: "Template gratuito per automatizzare il primo livello di customer support. Include chatbot setup, ticket routing, FAQ dinamiche.",
     category: "Customer Service",
     complexity: "Semplice",
-    price: "Gratis",
+    price: "Free",
     platforms: ["Zendesk", "Intercom", "ChatGPT", "Zapier"],
     timeToImplement: "2-4 ore",
     link: "https://gumroad.com/l/support-autopilot-free",
@@ -90,7 +91,7 @@ const automations: AutomationItem[] = [
     description: "Sistema completo per automatizzare la creazione di contenuti: research automatico, generation AI, SEO optimization, publishing multi-canale.",
     category: "Content Marketing",
     complexity: "Avanzato",
-    price: "A pagamento",
+    price: "Premium",
     platforms: ["ChatGPT", "WordPress", "Buffer", "Ahrefs API"],
     timeToImplement: "6-10 ore",
     link: "https://gumroad.com/l/content-pipeline-pro",
@@ -101,18 +102,18 @@ const automations: AutomationItem[] = [
     description: "Monitoraggio intelligente delle scorte con predizioni AI. Alert personalizzati, riordino automatico, gestione fornitori integrata.",
     category: "Inventory Management",
     complexity: "Intermedio",
-    price: "Gratis",
+    price: "Free",
     platforms: ["Google Sheets", "Slack", "Email", "Telegram"],
     timeToImplement: "2-3 ore",
     link: "https://gumroad.com/l/inventory-alerts-free",
-    status: "Presto disponibile"
+    status: "In Brainstorming"
   },
   {
     title: "CRM Data Synchronization Hub",
     description: "Sincronizzazione bidirezionale tra CRM, email marketing, contabilità e analytics. Un singolo workflow per governare tutti i tuoi dati clienti.",
     category: "CRM Integration",
     complexity: "Avanzato",
-    price: "A pagamento",
+    price: "Premium",
     platforms: ["HubSpot", "Salesforce", "Make.com", "Google Analytics"],
     timeToImplement: "8-12 ore",
     link: "https://gumroad.com/l/crm-sync-hub-pro",
@@ -123,7 +124,7 @@ const automations: AutomationItem[] = [
     description: "Kit gratuito con 15 sequenze email pre-scritte e automatizzate. Include: welcome series, abandoned cart, win-back, upsell sequences.",
     category: "Email Marketing",
     complexity: "Semplice",
-    price: "Gratis",
+    price: "Free",
     platforms: ["Mailchimp", "ConvertKit", "ActiveCampaign"],
     timeToImplement: "1-2 ore",
     link: "https://gumroad.com/l/email-sequences-free",
@@ -181,42 +182,19 @@ export default function AutomazioniPage() {
 
       <AutomazioniDirectory automations={automations} />
 
-      <div className="content-section">
-        <div className="custom-automation">
-          <h2>🚀 Automazione su Misura</h2>
-          <p>
-            Hai processi unici che richiedono una soluzione personalizzata? 
-            Posso creare automazioni completamente customizzate per la tua azienda.
-          </p>
-          <div className="custom-process">
-            <div className="process-steps">
-              <div className="process-step">
-                <div className="step-number">1</div>
-                <h4>Analisi</h4>
-                <p>Studio i tuoi processi attuali</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">2</div>
-                <h4>Progettazione</h4>
-                <p>Disegno il workflow ottimale</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">3</div>
-                <h4>Implementazione</h4>
-                <p>Sviluppo e testo l&apos;automazione</p>
-              </div>
-              <div className="process-step">
-                <div className="step-number">4</div>
-                <h4>Formazione</h4>
-                <p>Formo il tuo team</p>
-              </div>
-            </div>
-          </div>
-          <a href="/contatti" className="cta-button">
-            Richiedi un&apos;Automazione Personalizzata
-          </a>
-        </div>
-      </div>
+      <ContactCTA
+        title="Automazione su Misura"
+        subtitle="Hai processi unici da automatizzare?"
+        description="Posso creare automazioni completamente personalizzate per la tua azienda. Dal workflow design all'implementazione finale, trasformiamo i tuoi processi manuali in sistemi intelligenti."
+        source="automazioni-page"
+        icon="🚀"
+        features={[
+          "Analisi completa dei processi attuali",
+          "Progettazione workflow ottimizzati",
+          "Implementazione e testing",
+          "Formazione completa del team"
+        ]}
+      />
     </div>
   );
 }

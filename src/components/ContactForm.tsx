@@ -2,7 +2,11 @@
 
 import React, { useState } from 'react';
 
-export default function ContactForm() {
+interface ContactFormProps {
+  source?: string;
+}
+
+export default function ContactForm({ source }: ContactFormProps = {}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [captcha, setCaptcha] = useState<{question: string, answer: number}>({question: '', answer: 0});
@@ -106,6 +110,7 @@ export default function ContactForm() {
         {/* Hidden fields for Brevo integration */}
         <input type="hidden" name="listId" value="8" />
         <input type="hidden" name="formName" value="Form Contatti" />
+        {source && <input type="hidden" name="source" value={source} />}
         
         {/* Honeypot field - hidden from humans, visible to bots */}
         <input 

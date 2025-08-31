@@ -7,11 +7,11 @@ interface AutomationItem {
   description: string;
   category: string;
   complexity: 'Semplice' | 'Intermedio' | 'Avanzato';
-  price: 'Gratis' | 'A pagamento';
+  price: 'Free' | 'Premium';
   platforms: string[];
   timeToImplement: string;
   link: string;
-  status: 'Disponibile' | 'In sviluppo' | 'Presto disponibile';
+  status: 'Disponibile' | 'In sviluppo' | 'In Brainstorming';
 }
 
 interface AutomazioniDirectoryProps {
@@ -49,8 +49,8 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
     });
   }, [automations, searchTerm, selectedCategory, selectedComplexity, selectedPrice, selectedStatus]);
 
-  const freeAutomations = filteredAutomations.filter(automation => automation.price === 'Gratis');
-  const paidAutomations = filteredAutomations.filter(automation => automation.price === 'A pagamento');
+  const freeAutomations = filteredAutomations.filter(automation => automation.price === 'Free');
+  const paidAutomations = filteredAutomations.filter(automation => automation.price === 'Premium');
 
   const getComplexityColor = (complexity: string) => {
     switch (complexity) {
@@ -74,7 +74,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
     <div className="content-section">
       {/* Search and Filters */}
       <div style={{
-        background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
         padding: '2rem',
         borderRadius: '20px',
         marginBottom: '3rem',
@@ -124,7 +124,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                     background: selectedCategory === category 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedCategory === category ? '#f5576c' : 'white',
+                    color: selectedCategory === category ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
@@ -160,7 +160,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                     background: selectedComplexity === complexity 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedComplexity === complexity ? '#f5576c' : 'white',
+                    color: selectedComplexity === complexity ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
@@ -191,7 +191,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                     background: selectedPrice === price 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedPrice === price ? '#f5576c' : 'white',
+                    color: selectedPrice === price ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
@@ -222,7 +222,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                     background: selectedStatus === status 
                       ? 'rgba(255,255,255,1)' 
                       : 'rgba(255,255,255,0.2)',
-                    color: selectedStatus === status ? '#f5576c' : 'white',
+                    color: selectedStatus === status ? '#2563eb' : 'white',
                     backdropFilter: 'blur(10px)'
                   }}
                 >
@@ -274,7 +274,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                 justifyContent: 'space-between',
                 marginBottom: '2rem',
                 padding: '1rem 2rem',
-                background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+                background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                 borderRadius: '15px',
                 color: 'white'
               }}>
@@ -301,7 +301,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                     borderRadius: '20px',
                     padding: '2rem',
                     boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
-                    border: '3px solid #11998e',
+                    border: '3px solid #2563eb',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer'
                   }}
@@ -324,7 +324,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                       <div style={{ display: 'flex', gap: '0.8rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                         <span style={{
                           padding: '0.3rem 0.8rem',
-                          background: '#11998e',
+                          background: '#2563eb',
                           color: 'white',
                           borderRadius: '20px',
                           fontSize: '0.8rem',
@@ -376,7 +376,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                       <span style={{
                         fontSize: '1.2rem',
                         fontWeight: 'bold',
-                        color: '#11998e'
+                        color: '#2563eb'
                       }}>
                         🎁 GRATIS
                       </span>
@@ -386,7 +386,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                         rel="noopener noreferrer"
                         style={{
                           padding: '0.8rem 1.5rem',
-                          background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
+                          background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                           color: 'white',
                           textDecoration: 'none',
                           borderRadius: '25px',
@@ -412,7 +412,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                 justifyContent: 'space-between',
                 marginBottom: '2rem',
                 padding: '1rem 2rem',
-                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                 borderRadius: '15px',
                 color: 'white'
               }}>
@@ -439,7 +439,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                     borderRadius: '20px',
                     padding: '2rem',
                     boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
-                    border: '3px solid #f5576c',
+                    border: '3px solid #fb923c',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer',
                     position: 'relative'
@@ -456,7 +456,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                       position: 'absolute',
                       top: '-10px',
                       right: '20px',
-                      background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                      background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                       color: 'white',
                       padding: '0.5rem 1rem',
                       borderRadius: '15px',
@@ -477,7 +477,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                       <div style={{ display: 'flex', gap: '0.8rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                         <span style={{
                           padding: '0.3rem 0.8rem',
-                          background: '#f5576c',
+                          background: '#fb923c',
                           color: 'white',
                           borderRadius: '20px',
                           fontSize: '0.8rem',
@@ -529,7 +529,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                       <span style={{
                         fontSize: '1.2rem',
                         fontWeight: 'bold',
-                        color: '#f5576c'
+                        color: '#fb923c'
                       }}>
                         💎 PREMIUM
                       </span>
@@ -539,7 +539,7 @@ export default function AutomazioniDirectory({ automations }: AutomazioniDirecto
                         rel="noopener noreferrer"
                         style={{
                           padding: '0.8rem 1.5rem',
-                          background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                          background: 'linear-gradient(135deg, #2563eb 0%, #fb923c 100%)',
                           color: 'white',
                           textDecoration: 'none',
                           borderRadius: '25px',
