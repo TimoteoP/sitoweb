@@ -1,24 +1,33 @@
 {
     "servers": {
-      "Ref": {
-        "type": "http",
-        "url": "https://api.ref.tools/mcp",
-        "headers": {
-          "Authorization": "Bearer ${REF_API_KEY}"
-        }
-      },
       "supabase": {
         "command": "npx",
         "args": [
           "-y",
           "@supabase/mcp-server-supabase@latest",
           "--read-only",
-          "--project-ref=xkjaauscctbhgwxiaihh",
-          "--features=database,docs"
+          "--project-ref=${env:SUPABASE_PROJECT_REF}"
         ],
-        "type": "stdio",
         "env": {
-          "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
+          "SUPABASE_ACCESS_TOKEN": "${env:SUPABASE_ACCESS_TOKEN}"
+        }
+      },
+      "memory": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-memory@latest"]
+      },
+      "semgrep": {
+        "command": "/Users/timoteoair/.local/bin/uvx",
+        "args": ["semgrep-mcp"],
+        "env": {
+          "SEMGREP_APP_TOKEN": "${env:SEMGREP_APP_TOKEN}"
+        }
+      },
+      "ref-tools": {
+        "command": "npx",
+        "args": ["-y", "ref-tools-mcp@latest"],
+        "env": {
+          "REF_API_KEY": "${env:REF_API_KEY}"
         }
       },
       "taskmaster": {
@@ -26,10 +35,10 @@
         "args": ["-y", "--package=task-master-ai", "task-master-ai"],
         "type": "stdio",
         "env": {
-          "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
-          "TASKMASTER_PROVIDER": "anthropic",
-          "TASKMASTER_MODEL": "claude-3-5-sonnet-latest"
+          "OPENAI_API_KEY": "${env:OPENAI_API_KEY}",
+          "TASKMASTER_PROVIDER": "openai",
+          "TASKMASTER_MODEL": "gpt-4.0-mini"
         }
       }
     }
-  }
+}

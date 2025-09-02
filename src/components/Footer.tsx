@@ -22,14 +22,14 @@ export default function Footer({ currentPage }: FooterProps) {
           <div>
             <h4 style={{ 
               color: 'white',
-              fontSize: '0.875rem',
-              fontWeight: '600',
+              fontSize: '0.675rem',
+              fontWeight: '500',
               marginBottom: '1rem',
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
               margin: '0 0 1rem 0'
             }}>
-              Info
+              Menu
             </h4>
             <nav style={{ 
               display: 'flex',
@@ -115,7 +115,7 @@ export default function Footer({ currentPage }: FooterProps) {
                   transition: 'color 0.2s ease'
                 }}
               >
-                LinkedIn
+                💼 LinkedIn
               </a>
               <a
                 href={siteConfig.author.social.youtube}
@@ -129,7 +129,7 @@ export default function Footer({ currentPage }: FooterProps) {
                   transition: 'color 0.2s ease'
                 }}
               >
-                YouTube
+                📺 YouTube
               </a>
               <a
                 href={siteConfig.author.social.facebook}
@@ -143,7 +143,7 @@ export default function Footer({ currentPage }: FooterProps) {
                   transition: 'color 0.2s ease'
                 }}
               >
-                Facebook
+                📘 Facebook
               </a>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function Footer({ currentPage }: FooterProps) {
               letterSpacing: '0.05em',
               margin: '0 0 1rem 0'
             }}>
-              My Data
+              Info
             </h4>
             <div style={{ 
               display: 'flex',
@@ -176,10 +176,10 @@ export default function Footer({ currentPage }: FooterProps) {
                   transition: 'color 0.2s ease'
                 }}
               >
-                info@timoteopasquali.it
+                📧 info@timoteopasquali.it
               </a>
               <span style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                P.IVA IT00000000000
+                P.IVA IT01479140111
               </span>
               <span style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                 La Spezia, Italia
